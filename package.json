@@ -1,0 +1,15 @@
+{
+  "name": "8sian",
+  "version": "1.0.0",
+  "description": "Projeto demonstração da criação de um API com Express",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "Prof. Martin Morães",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
