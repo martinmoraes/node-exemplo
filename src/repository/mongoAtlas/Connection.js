@@ -1,4 +1,4 @@
-const MongoClient = require('mongodb').MongoClient;
+const {MongoClient, ObjectId} = require('mongodb')
 
 
 class Connection {
@@ -19,6 +19,15 @@ class Connection {
         } catch (error) {
             console.log('Connection.getClienteMongoDB', error)
 
+        }
+    }
+
+
+    getObjectId(stringID){
+        try{
+            return ObjectId(stringID)
+        } catch(fail){
+            console.log('Connection.getObjectId', fail)
         }
     }
 }

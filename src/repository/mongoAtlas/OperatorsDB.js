@@ -18,12 +18,27 @@ class OperatorsDB extends Connection {
 
     async find(collection, query) {
         try {
-            const { client, db } = this.getClienteMongoDB()
+            const { client, db } = await this.getClienteMongoDB()
             const cursor = await db.collection(collection).find(query)
+            const allElements = []
+            await cursor.forEach(element => allElements.push(element))
             client.close()
-            return cursor
+            return allElements
         } catch (error) {
             console.log('Operators.find', error)
+        }
+    }
+
+    async findById(collection, id) {
+        try {
+
+            const query = {_id: this.getObjectId(id)}
+            const { client, db } = await this.getClienteMongoDB()
+            const user = await db.collection(collection).findOne(query)
+            client.close()
+            return user
+        } catch (error) {
+            console.log('Operators.findById', error)
         }
     }
 }
